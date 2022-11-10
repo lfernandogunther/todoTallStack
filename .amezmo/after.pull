@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e;
+
+APP_ENV=$(cat .env | grep APP_ENV | cut -d '=' -f 2);
+
+# Composer
+echo "Running composer install from ${APPLICATION_ROOT}";
+
+# Migrations
+echo "Running migrations for ${APP_ENV} environment";
+if [ $APP_ENV = 'staging' ] || [ $APP_ENV = 'production' ]; then
+    composer2 --no-ansi --no-interaction --optimize-autoloader --no-progress --profile --no-cache install;
+    php artisan livewire:publish --assets
+    php artisan migrate --force;
+fi
+
+# NPM
+echo "Running NPM for ${APP_ENV} environment";
+npm install --no-progress;
+npm run build --no-progress;
+
+# Create our symbolic link to point our public storage directory
+# to our persistent storage directory
+ln \
+    --symbolic \
+    --force \
+    --no-dereference \
+    /webroot/storage/public "${APPLICATION_ROOT}/public/storage";
