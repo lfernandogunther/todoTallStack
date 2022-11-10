@@ -10,7 +10,9 @@
     @vite('resources/js/app.js')
     @livewireStyles
 </head>
-<body>
+<body class="soft-scrollbar">
+    <x-notifications />
+
     {{ $slot }}
     @livewireScripts
 </body>

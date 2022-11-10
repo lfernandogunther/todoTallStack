@@ -12,6 +12,10 @@ class Index extends Component
 
     public Todo $todo;
 
+    protected $listeners = [
+        'todo:deleted' => '$refresh'
+    ];
+
     protected $rules = [
         'todo.description' => 'required|max:50'
     ];
