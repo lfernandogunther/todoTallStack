@@ -10,10 +10,16 @@
 
         <ul class="space-y-4">
             @foreach ($todoList as $todo)
-                <li wire:key="list:{{ $todo->id }}" class="body-hidden flex justify-between gap-2 p-4 bg-gray-100 shadow-lg rounded-lg ">
-                    <livewire:todo.toggle wire:key="toggle:{{ $todo->id }}" :todo="$todo"/>
+                <li wire:key="list:{{ $todo->id }}"
+                    @class([
+                        'bg-gray-100' => !$todo->done,
+                        'bg-blue-200' => $todo->done,
+                        'body-hidden flex justify-between items-center gap-2 p-4 shadow-lg rounded-lg'
+                    ])>
 
-                    <div @class(['line-through' => $todo->done, 'w-full'])>{{ $todo->description }}</div>
+                    <div class="!cursor-pointer">
+                        <livewire:todo.toggle wire:key="toggle:{{ $todo->id }}" :todo="$todo"/>
+                    </div>
 
                     <div class="flex-table-hidden-actions flex justify-between gap-2">
                         @if(!$todo->done)

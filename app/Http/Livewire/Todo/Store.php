@@ -25,9 +25,15 @@ class Store extends Component
         $this->resetTodo();
     }
 
-    private function resetTodo(): void
+    public function resetTodo(): void
     {
         $this->todo = new Todo();
+        $this->resetErrorBag();
+    }
+
+    public function getEditModeProperty(): bool
+    {
+        return (bool)$this->todo->id;
     }
 
     public function save(): void
@@ -49,6 +55,7 @@ class Store extends Component
     public function edit(Todo $todo)
     {
         $this->todo = $todo;
+        $this->resetErrorBag();
     }
 
     public function render()
