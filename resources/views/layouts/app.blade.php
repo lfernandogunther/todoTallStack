@@ -11,7 +11,7 @@
     @livewireStyles
 </head>
 <body class="soft-scrollbar">
-    <x-notifications />
+    <x-notifications position="bottom-left" />
 
     {{ $slot }}
     @livewireScripts

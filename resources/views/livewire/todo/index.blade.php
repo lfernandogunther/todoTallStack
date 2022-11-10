@@ -1,12 +1,7 @@
-<div class="flex justify-center items-center min-h-screen w-full mx-auto bg-teal-600">
+<div class="flex justify-center min-h-screen w-full  bg-teal-600">
     <div class="w-full p-4 md:max-w-2xl">
-        <div class="sticky top-0 flex items-start justify-between gap-2 py-2 px-4 mb-8 bg-gray-100 shadow-lg rounded-lg">
-           <div class="w-full">
-                <x-input class="!bg-transparent" placeholder="create a todo"
-                borderless shadowless wire:model='todo.description'/>
-           </div>
-
-            <x-button wire:click='save' teal label="Add"/>
+        <div class="sticky top-0  mb-8 w-full">
+            <livewire:todo.store />
         </div>
 
         <ul class="space-y-4">
