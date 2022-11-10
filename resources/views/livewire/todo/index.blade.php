@@ -16,10 +16,9 @@
                         'bg-blue-200' => $todo->done,
                         'body-hidden flex justify-between items-center gap-2 p-4 shadow-lg rounded-lg'
                     ])>
+                    <livewire:todo.toggle wire:key="toggle:{{ $todo->id }}" :todo="$todo"/>
 
-                    <div class="!cursor-pointer">
-                        <livewire:todo.toggle wire:key="toggle:{{ $todo->id }}" :todo="$todo"/>
-                    </div>
+                    <label for="toggle.{{$todo->id}}" @class(['line-through' => $todo->done, 'w-full cursor-pointer'])>{{ $todo->description }}</label for="">
 
                     <div class="flex-table-hidden-actions flex justify-between gap-2">
                         @if(!$todo->done)
