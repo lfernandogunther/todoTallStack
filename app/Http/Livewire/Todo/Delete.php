@@ -12,11 +12,6 @@ class Delete extends Component
 
     public Todo $todo;
 
-    public function render()
-    {
-        return view('livewire.todo.delete');
-    }
-
     public function delete(): void
     {
         $this->todo->delete();
@@ -27,5 +22,10 @@ class Delete extends Component
         );
 
         $this->emitUp('todo:deleted');
+    }
+
+    public function render()
+    {
+        return view('livewire.todo.delete');
     }
 }

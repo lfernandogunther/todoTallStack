@@ -12,8 +12,14 @@ class Index extends Component
 
     protected $listeners = [
         'todo:deleted' => '$refresh',
-        'todo:stored' => '$refresh'
+        'todo:stored' => '$refresh',
+        'todo:toggle' => '$refresh'
     ];
+
+    public function edit(string|int $todoId)
+    {
+        $this->emit('todo:edit', $todoId);
+    }
 
     private function fillTodoList(): void
     {

@@ -12,6 +12,10 @@ class Store extends Component
 
     public Todo $todo;
 
+    protected $listeners = [
+        'todo:edit' => 'edit',
+    ];
+
     protected $rules = [
         'todo.description' => 'required|max:50'
     ];
@@ -40,6 +44,11 @@ class Store extends Component
         $this->emitUp('todo:stored');
 
         $this->resetTodo();
+    }
+
+    public function edit(Todo $todo)
+    {
+        $this->todo = $todo;
     }
 
     public function render()

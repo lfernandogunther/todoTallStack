@@ -10,4 +10,8 @@ class Todo extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $cast = [
+        'done' => 'boolean'
+    ];
 }
