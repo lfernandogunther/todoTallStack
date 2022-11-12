@@ -5,9 +5,10 @@
             wire:model='todo.description' />
     </div>
 
+
     <div class="flex justify-between items-center gap-2">
         @if ($this->editMode)
-            <x-button wire:click='resetTodo' rounded flat red icon="x" />
+            <x-icon name="x" class="w-5 h-5 text-red-400 cursor-pointer" wire:click='resetTodo' />
         @endif
 
         <x-button type="form" teal label="{{ $this->editMode ? 'Update' : 'Add' }}" />
