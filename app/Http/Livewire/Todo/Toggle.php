@@ -12,7 +12,7 @@ class Toggle extends Component
 
     public Todo $todo;
 
-    protected $rules = [
+    protected array $rules = [
         'todo.done' => 'boolean|required'
     ];
 
@@ -22,12 +22,7 @@ class Toggle extends Component
 
         $this->todo->save();
 
-        $this->notification()->success(
-            title: 'Todo',
-            description: 'Your todo was successfully updated.'
-        );
-
-        $this->emitUp('todo:toggle');
+        $this->emit('todo:list-updated');
     }
 
     public function render()

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,13 @@
     @vite('resources/js/app.js')
     @livewireStyles
 </head>
+
 <body class="soft-scrollbar">
+    <x-dialog />
     <x-notifications position="bottom-left" />
 
     {{ $slot }}
     @livewireScripts
 </body>
+
 </html>

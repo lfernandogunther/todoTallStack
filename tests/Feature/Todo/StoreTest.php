@@ -13,7 +13,7 @@ it('can add todo', function(){
     livewire(Store::class)
         ->set('todo.description', $description)
         ->call('save')
-        ->assertEmittedUp('todo:stored')
+        ->assertEmitted('todo:list-updated')
         ->assertOk();
 
     $this->assertDatabaseHas('todos',['description' => $description]);

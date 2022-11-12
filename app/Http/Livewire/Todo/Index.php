@@ -11,9 +11,7 @@ class Index extends Component
     public Collection $todoList;
 
     protected $listeners = [
-        'todo:deleted' => '$refresh',
-        'todo:stored' => '$refresh',
-        'todo:toggle' => '$refresh'
+       'todo:list-updated' => '$refresh',
     ];
 
     public function edit(string|int $todoId)

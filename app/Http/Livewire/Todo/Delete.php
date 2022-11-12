@@ -21,7 +21,7 @@ class Delete extends Component
             description: 'Your todo was successfully deleted.'
         );
 
-        $this->emitUp('todo:deleted');
+        $this->emit('todo:list-updated');
     }
 
     public function render()

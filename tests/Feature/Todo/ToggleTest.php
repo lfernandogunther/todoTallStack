@@ -16,7 +16,7 @@ it('can toggle todo', function () {
 
     livewire(Toggle::class, ['todo' => $todo])
         ->set('todo.done', true)
-        ->assertEmittedUp('todo:toggle');
+        ->assertEmitted('todo:list-updated');
 
     $this->assertDatabaseHas('todos', [
         'id'    => $todo->id,

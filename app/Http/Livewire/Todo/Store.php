@@ -42,12 +42,7 @@ class Store extends Component
 
         $this->todo->save();
 
-        $this->notification()->success(
-            title: 'Todo',
-            description: 'Your todo was successfully stored.'
-        );
-
-        $this->emitUp('todo:stored');
+        $this->emit('todo:list-updated');
 
         $this->resetTodo();
     }
@@ -55,6 +50,7 @@ class Store extends Component
     public function edit(Todo $todo)
     {
         $this->todo = $todo;
+
         $this->resetErrorBag();
     }
 

@@ -15,7 +15,7 @@ it('can delete todo', function () {
 
     livewire(Delete::class, ['todo' => $todo])
         ->call('delete')
-        ->assertEmittedUp('todo:deleted');
+        ->assertEmitted('todo:list-updated');
 
     $this->assertSoftDeleted('todos', [
         'id'    => $todo->id,
