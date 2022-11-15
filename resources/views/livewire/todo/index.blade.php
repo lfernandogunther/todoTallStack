@@ -8,7 +8,7 @@
         <h3 class='font-semibold text-2xl text-white w-full text-center mb-4'>
             List of things to do
         </h3>
-        @if ($todoList->count() === 0)
+        @if ($this->todoList?->count() === 0)
             <p class='text-white w-full text-center'>You can start by typing your first to do item</p>
         @endif
 
@@ -19,7 +19,7 @@
         <livewire:todo.actions />
 
         <ul class="space-y-4">
-            @foreach ($todoList as $todo)
+            @foreach ($this->todoList as $todo)
                 <li
                     wire:key="list:{{ $todo->id }}"
                     @class([

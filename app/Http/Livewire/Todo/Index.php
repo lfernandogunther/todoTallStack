@@ -8,8 +8,6 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public Collection $todoList;
-
     protected $listeners = [
        'todo:list-updated' => '$refresh',
     ];
@@ -19,15 +17,13 @@ class Index extends Component
         $this->emit('todo:edit', $todoId);
     }
 
-    private function fillTodoList(): void
+    public function getTodoListProperty(): Collection
     {
-        $this->todoList = Todo::orderBy('id', 'desc')->get();
+        return Todo::orderBy('id', 'desc')->get();
     }
 
     public function render()
     {
-        $this->fillTodoList();
-
         return view('livewire.todo.index');
     }
 }
