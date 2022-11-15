@@ -29,7 +29,7 @@
                     ])
                 >
                     <livewire:todo.toggle
-                        wire:key="toggle:{{ $todo->id }}"
+                        wire:key="toggle:{{ $todo->id }}:{{ $todo->updated_at }}"
                         :todo="$todo"
                     />
 

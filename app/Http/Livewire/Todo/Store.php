@@ -44,8 +44,7 @@ class Store extends Component
 
         $this->todo->save();
 
-        // $this->emit('todo:list-updated');
-
+        $this->emit('todo:list-updated');
         TodoRefresh::dispatch();
 
         $this->resetTodo();
