@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Todo;
 
+use App\Events\TodoRefresh;
 use App\Models\Todo;
 use WireUi\Traits;
 
@@ -35,6 +36,7 @@ class Actions extends Component
         );
 
         $this->emit('todo:list-updated');
+        TodoRefresh::dispatch();
     }
 
     public function getIsTodoListEmptyProperty(): bool

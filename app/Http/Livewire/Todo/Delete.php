@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Todo;
 
+use App\Events\TodoRefresh;
 use App\Models\Todo;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -22,6 +23,7 @@ class Delete extends Component
         );
 
         $this->emit('todo:list-updated');
+        TodoRefresh::dispatch();
     }
 
     public function render()

@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Todo;
 
+use App\Events\TodoRefresh;
 use App\Models\Todo;
+use Illuminate\Support\Facades\Event;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
@@ -42,7 +44,9 @@ class Store extends Component
 
         $this->todo->save();
 
-        $this->emit('todo:list-updated');
+        // $this->emit('todo:list-updated');
+
+        TodoRefresh::dispatch();
 
         $this->resetTodo();
     }

@@ -10,6 +10,7 @@ class Index extends Component
 {
     protected $listeners = [
        'todo:list-updated' => '$refresh',
+       'echo:todos,TodoRefresh' => '$refresh',
     ];
 
     public function edit(string|int $todoId)

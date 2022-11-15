@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Todo;
 
+use App\Events\TodoRefresh;
 use App\Models\Todo;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -23,6 +24,7 @@ class Toggle extends Component
         $this->todo->save();
 
         $this->emit('todo:list-updated');
+        TodoRefresh::dispatch();
     }
 
     public function render()
